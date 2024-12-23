@@ -39,6 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: true,
     bundleIdentifier: Env.BUNDLE_ID,
+    // googleServicesFile: './GoogleService-Info.plist',
   },
   experiments: {
     typedRoutes: true,
@@ -49,12 +50,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#2E3C4B',
     },
     package: Env.PACKAGE,
+    // googleServicesFile: './google-services.json',
   },
   web: {
     favicon: './assets/favicon.png',
     bundler: 'metro',
   },
   plugins: [
+    ['@react-native-google-signin/google-signin'],
     [
       'expo-splash-screen',
       {
@@ -72,7 +75,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-localization',
     'expo-router',
     ['app-icon-badge', appIconBadgeConfig],
-    ["react-native-edge-to-edge"]
+    ['react-native-edge-to-edge'],
   ],
   extra: {
     ...ClientEnv,
